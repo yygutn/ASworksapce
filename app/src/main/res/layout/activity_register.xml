@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@color/defaultColor"
+		tools:context=".Activity.Common.RegisterActivity"
+		>
+
+	<com.parttime.UI.TopBar_
+			android:id="@+id/register_top"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="10dp"
+			>
+
+		<LinearLayout
+				android:background="@color/white"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				>
+
+			<TextView
+					android:padding="5dp"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"
+					android:gravity="center_vertical"
+					android:textColor="@color/black"
+					android:text="您是"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					>
+
+				<CheckBox
+						android:id="@+id/register_user"
+						android:layout_weight="1"
+						android:layout_width="0dp"
+						android:checked="true"
+						android:layout_height="wrap_content"
+						android:text="个人"
+						/>
+
+				<CheckBox
+						android:id="@+id/register_company"
+						android:layout_weight="1"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:text="企业"
+						/>
+
+			</LinearLayout>
+		</LinearLayout>
+
+		<EditText
+				android:id="@+id/register_username"
+				android:padding="5dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@color/white"
+				android:textColor="@color/black"
+				android:hint="请输入用户名"
+				android:inputType="text"
+				android:gravity="center_vertical"
+				android:textSize="16sp"
+				/>
+
+		<EditText
+				android:id="@+id/register_email"
+				android:padding="5dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:inputType="text"
+				android:background="@color/white"
+				android:textColor="@color/black"
+				android:hint="请输入您的电子邮箱"
+				android:gravity="center_vertical"
+				android:textSize="16sp"
+				/>
+
+		<EditText
+				android:id="@+id/register_pass"
+				android:padding="5dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:inputType="text"
+				android:background="@color/white"
+				android:textColor="@color/black"
+				android:hint="请输入密码"
+				android:gravity="center_vertical"
+				android:textSize="16sp"
+				/>
+
+		<EditText
+				android:id="@+id/register_pass_confirm"
+				android:padding="5dp"
+				android:inputType="text"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@color/white"
+				android:textColor="@color/black"
+				android:hint="确认密码"
+				android:gravity="center_vertical"
+				android:textSize="16sp"
+				/>
+
+		<TextView
+				android:id="@+id/register_submit"
+				android:layout_marginTop="20dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="@drawable/shape_circle_sign_up_confirm"
+				android:textColor="@color/white"
+				android:text="注册"
+				android:gravity="center"
+				android:textSize="20sp"
+				/>
+	</LinearLayout>
+
+
+</LinearLayout>

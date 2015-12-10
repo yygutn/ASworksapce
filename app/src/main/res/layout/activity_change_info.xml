@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		tools:context=".Activity.User.ChangeInfoActivity"
+		>
+	<android.support.v7.widget.Toolbar
+			android:id="@+id/user_info_change_topBar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:title="哈哈"
+			app:titleTextColor="@color/white"
+			app:navigationIcon="@mipmap/title_back"
+			android:background="@color/colorPrimary"/>
+
+	<EditText
+			android:id="@+id/user_info_change_edit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+	        android:minHeight="50dp"
+	        android:layout_margin="10dp"
+	        android:inputType="text|number"
+			/>
+
+	<TextView
+			android:id="@+id/user_info_change_submit"
+			android:layout_width="match_parent"
+			android:layout_height="35dp"
+			android:text="@string/save"
+			android:gravity="center"
+			android:textColor="@color/white"
+			android:background="@drawable/shape_circle_sign_up_confirm"
+			android:textSize="16sp"
+			android:layout_margin="10dp"/>
+
+</LinearLayout>

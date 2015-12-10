@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/defaultColor"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		tools:context=".Activity.User.MyPartTimeJobActivity"
+		>
+	<android.support.v7.widget.Toolbar
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:navigationIcon="@mipmap/title_back"
+			app:title="我的兼职"
+			app:titleTextColor="@color/white"
+			android:background="@color/colorPrimary"/>
+
+	<LinearLayout
+			android:background="@color/white"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:orientation="horizontal">
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textSize="16sp"
+				android:textColor="@color/black"
+				android:gravity="center"
+				android:text="全部"
+				android:id="@+id/job_all"
+				/>
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textSize="16sp"
+				android:textColor="@color/black"
+				android:gravity="center"
+				android:text="待录取"
+				android:id="@+id/job_waiting"
+				/>
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textSize="16sp"
+				android:textColor="@color/black"
+				android:gravity="center"
+				android:text="工作中"
+				android:id="@+id/job_working"
+				/>
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textSize="16sp"
+				android:textColor="@color/black"
+				android:gravity="center"
+				android:text="工资未结"
+				android:id="@+id/job_money"
+				/>
+
+
+	</LinearLayout>
+
+	<android.support.v7.widget.RecyclerView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/job_recView"
+			/>
+
+
+</LinearLayout>

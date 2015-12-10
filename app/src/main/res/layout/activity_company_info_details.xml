@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".Activity.Company.CompanyInfoDetailsActivity"
+		>
+
+	<android.support.v7.widget.Toolbar
+			android:id="@+id/company_info_topBar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:title="企业资料"
+			app:titleTextColor="@color/white"
+			app:navigationIcon="@mipmap/title_back"
+			android:background="@color/colorPrimary"
+			/>
+
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			>
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+		        android:orientation="vertical"
+				>
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="80dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:text="@string/CompanyLogo"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="60dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="15dp"
+						/>
+
+				<com.facebook.drawee.view.SimpleDraweeView
+						android:id="@+id/company_info_logo"
+						android:layout_width="60dp"
+						android:layout_height="60dp"
+						android:background="@mipmap/main_index_my_pressed"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="60dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center_vertical"
+						android:text="@string/CompanyName"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_name"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="LOL"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="60dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center_vertical"
+						android:text="@string/CompanyHR"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_hr"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="gift"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="60dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center_vertical"
+						android:text="@string/CompanyPhone"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_phone"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="120"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="60dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center_vertical"
+						android:text="@string/CompanyTell"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_TEL"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="110"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="60dp"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:layout_gravity="center_vertical"
+						android:text="@string/CompanyLocation"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_location"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="←_←"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:weightSum="5"
+					android:padding="10dp"
+					android:orientation="horizontal"
+					>
+
+				<TextView
+						android:layout_width="70dp"
+						android:layout_height="wrap_content"
+						android:textSize="14sp"
+						android:paddingTop="10dp"
+						android:text="@string/CompanyRemark"
+						/>
+
+				<ImageView
+						android:layout_gravity="center_vertical"
+						android:layout_width="1dp"
+						android:layout_height="wrap_content"
+						android:minHeight="40dp"
+						android:background="@color/lightgrey"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						/>
+
+				<TextView
+						android:id="@+id/company_info_remark"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈嘻嘻哈哈"
+						android:textColor="@color/black"
+						android:layout_gravity="center_vertical"
+						android:gravity="center_vertical"
+						android:padding="5dp"
+						android:layout_marginLeft="10dp"
+						/>
+
+			</LinearLayout>
+
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:background="@color/defaultColor"
+					/>
+		</LinearLayout>
+	</ScrollView>
+
+
+</LinearLayout>

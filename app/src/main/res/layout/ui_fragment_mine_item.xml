@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/mine_item_root"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+		>
+
+	<ImageView
+			android:id="@+id/mine_item_img"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_margin="10dp"
+			android:background="@mipmap/main_index_tuan_pressed"
+			/>
+
+	<TextView
+			android:id="@+id/mine_item_show"
+			android:layout_width="0dp"
+			android:layout_height="45dp"
+			android:layout_weight="1"
+			android:gravity="center_vertical"
+			android:text="我的信息"
+			android:textSize="16sp"
+			android:textColor="@color/black"
+			/>
+
+	<ImageView
+			android:id="@+id/mine_item_rightImg"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:src="@mipmap/setting_cell_arrow"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			/>
+
+</merge>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@drawable/shape_rect_menubgcolor_nobg"
+              android:layout_height="wrap_content">
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:orientation="vertical">
+
+		<TextView
+				android:id="@+id/select_show"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:text="退出当前帐号"
+				android:textColor="@color/orange"
+				android:textSize="18sp" />
+	</LinearLayout>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+		<TextView
+				android:id="@+id/select_ok"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="50dp"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:background="@drawable/shape_rect_menubgcolor_nobg"
+				android:text="确定"
+				android:textColor="@color/menuBGClolr"
+				android:textSize="18sp" />
+
+		<TextView
+				android:id="@+id/select_cancel"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="50dp"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:text="取消"
+				android:background="@drawable/shape_rect_menubgcolor_nobg"
+				android:textColor="@color/menuBGClolr"
+				android:textSize="18sp" />
+	</LinearLayout>
+
+</LinearLayout>

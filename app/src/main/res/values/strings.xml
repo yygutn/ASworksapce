@@ -1,0 +1,25 @@
+<resources>
+	<string name="app_name">parttime</string>
+	<string name="quit">退出账户</string>
+	<string name="headImg">头像</string>
+	<string name="nickname">昵称</string>
+	<string name="remark">个性签名</string>
+	<string name="baseInfo">基本资料</string>
+	<string name="love">兴趣爱好</string>
+	<string name="ContactMethod">联系方式</string>
+	<string name="changePass">修改登录密码</string>
+	<string name="confirm">确定</string>
+	<string name="CompanyLogo">企业logo</string>
+	<string name="CompanyName">企业名称</string>
+	<string name="CompanyHR">负责人</string>
+	<string name="CompanyPhone">联系手机</string>
+	<string name="CompanyTell">固定电话</string>
+	<string name="CompanyLocation">企业地址</string>
+	<string name="CompanyRemark">公司简介</string>
+	<string name="save">保存</string>
+	<string name="defaulthead">http://b.hiphotos.baidu.com/image/pic/item/730e0cf3d7ca7bcbdbff9d2ebc096b63f624a82f.jpg</string>
+	<string name="SignUp">报名</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

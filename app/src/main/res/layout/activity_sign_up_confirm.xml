@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:background="@color/white"
+		tools:context="com.parttime.Activity.User.SignUpConfirmActivity"
+		>
+	<com.parttime.UI.TopBar_
+			android:id="@+id/sign_up_top"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="10dp"
+			>
+
+		<TextView
+				android:id="@+id/sign_up_jobName"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/black"
+				android:textSize="16sp"
+				android:text="传单发放"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:text="集合时间 : "
+					/>
+
+			<TextView
+					android:id="@+id/sign_up_gatheringTime"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:text=" 12-11 11:30(周五)"
+					/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:text="工作时间 : "
+					/>
+
+			<TextView
+					android:id="@+id/sign_up_workTime"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:text=" 12-11 11:30(周五)"
+					/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+	        android:layout_weight="1"
+	        android:background="@color/defaultColor"
+			>
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:background="@color/defaultColor"
+				android:padding="10dp"
+				>
+
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/blue_topBar"
+					android:textSize="20sp"
+					android:paddingTop="10dp"
+					android:text="请准时准点参加集合/面试和工作"/>
+
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					android:paddingTop="20dp"
+					android:text="特殊情况不能参加面试/集合，"
+					/>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/blue_topBar"
+					android:textSize="14sp"
+					android:paddingTop="20dp"
+					android:text="请在报名截止日期前进行退定操 ! "
+					/>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/black"
+					android:textSize="14sp"
+					android:paddingTop="20dp"
+					android:text="如：2015-1-1 18:00截止报名，如需退定，请在2015-1-1 18:00前完成退定操作 ! "
+					/>
+
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="@color/blue_topBar"
+					android:textSize="14sp"
+					android:paddingTop="20dp"
+					android:text="集合/面试和工作无故迟到或不到会降低信用"
+					/>
+
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingBottom="10dp"
+	        android:background="@color/defaultColor"
+	        android:orientation="horizontal"
+			>
+		<TextView
+				android:id="@+id/sign_up_confirm"
+				android:layout_width="0dp"
+				android:layout_marginRight="8dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textColor="@color/white"
+				android:textSize="20sp"
+				android:text="确认报名"
+				android:gravity="center"
+				android:background="@drawable/shape_circle_sign_up_confirm"/>
+		<TextView
+				android:id="@+id/sign_up_cancel"
+				android:layout_marginLeft="8dp"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:textColor="@color/white"
+				android:textSize="20sp"
+				android:text="取消"
+				android:gravity="center"
+				android:background="@drawable/shape_circle_sign_up_confirm"/>
+
+	</LinearLayout>
+</LinearLayout>
