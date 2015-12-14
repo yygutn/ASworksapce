@@ -20,6 +20,22 @@ public class Config {
     public Config() {
         sharedPreferences = GraduationApp.getInstance().getSharedPreferences("config",0);
     }
+
+    /**
+     * 获取登录状态
+     * @return true for login or false for un-login
+     */
+    public static Boolean getLoginStatus(){
+        return Config.getInstance().getBoolean("LoginStatus",false);
+    }
+
+    /**
+     * 设置登录状态
+     * @param loginStatus 登录状态
+     */
+    public static void setLoginStatus(Boolean loginStatus){
+        Config.getInstance().setBoolean("LoginStatus",loginStatus);
+    }
     /**
      * @Description 保存用户信息
      * @auther Jumy 2015/7/1 16:29

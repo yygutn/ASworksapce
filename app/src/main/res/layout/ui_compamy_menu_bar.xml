@@ -30,7 +30,7 @@
 				android:paddingTop="5dp"
 				android:gravity="center"
 				android:textSize="10sp"
-				android:text="今日兼职"
+				android:text="首页"
 				android:textColor="@color/menuColor"
 				/>
 
@@ -59,7 +59,7 @@
 				android:paddingTop="5dp"
 				android:gravity="center"
 				android:textSize="10sp"
-				android:text="个人中心"
+				android:text="我"
 				android:textColor="@color/smoke"
 				/>
 

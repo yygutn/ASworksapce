@@ -3,6 +3,9 @@ package com.parttime.Application;
 import android.app.Application;
 import cn.bmob.v3.Bmob;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.squareup.okhttp.OkHttpClient;
 
 /**
  * Created by Jumy on 15/12/6 下午6:08.
@@ -28,7 +31,10 @@ public class GraduationApp extends Application{
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Fresco.initialize(this);
+        ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
+                .newBuilder(this,new OkHttpClient())
+                .build();
+        Fresco.initialize(this,config);
         Bmob.initialize(this,Application_ID);
     }
 }

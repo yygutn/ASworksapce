@@ -41,6 +41,15 @@ public class BaseActivity extends AppCompatActivity{
         return null;
     }
 
+    public static void deleteAllStackBesideTop(){
+        int len = mPageStack.size();
+        while(mPageStack.size()>1){
+            mPageStack.remove(0).get().finish();
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

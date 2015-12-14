@@ -8,11 +8,11 @@
 		android:background="@color/white"
 		tools:context="com.parttime.Activity.Company.MainActivity"
 		>
-	<android.support.v7.widget.Toolbar
-			android:id="@+id/company_TopBar"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/colorPrimary"/>
+<com.parttime.UI.TopBar_
+		android:id="@+id/company_topBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		/>
 
 	<FrameLayout
 			android:id="@+id/company_frame"

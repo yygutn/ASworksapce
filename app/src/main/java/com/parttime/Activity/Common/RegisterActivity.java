@@ -8,13 +8,13 @@ import android.widget.TextView;
 import cn.bmob.v3.listener.SaveListener;
 import com.parttime.Activity.User.MainActivity_;
 import com.parttime.BaseLibs.BaseActivity;
+import com.parttime.Modules.Config;
 import com.parttime.Modules.User;
 import com.parttime.R;
+import com.parttime.UI.TopBar;
 import com.parttime.Utils.StringUtil;
 import com.parttime.Utils.ToastUtil;
-import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.*;
 
 /**
  * 公共
@@ -36,51 +36,59 @@ public class RegisterActivity extends BaseActivity {
     EditText mPass;
     @ViewById(R.id.register_pass_confirm)
     EditText mPassVerf;
+    @ViewById(R.id.register_top)
+    TopBar mTopbar;
 
     Boolean flag = false;
 
     Intent mIntent;
 
+    @AfterViews
+    void start() {
+        mTopbar.setTitle("注册");
+    }
 
-    @Click({R.id.register_user,R.id.register_company,R.id.register_submit})
-    void click(View view){
-        switch (view.getId()){
-            case R.id.register_company:{
+
+    @Click({R.id.register_user, R.id.register_company, R.id.register_submit})
+    void click(View view) {
+        switch (view.getId()) {
+            case R.id.register_company: {
                 checkBoxChecked(true);
                 break;
             }
-            case R.id.register_user:{
+            case R.id.register_user: {
                 checkBoxChecked(false);
                 break;
             }
-            case R.id.register_submit:{
+            case R.id.register_submit: {
                 doRegister();
                 break;
             }
-            default:break;
+            default:
+                break;
         }
     }
 
     private void doRegister() {
-        String username,password,passVerf,email;
+        String username, password, passVerf, email;
         username = mUername.getText().toString();
         email = mEmail.getText().toString();
         password = mPass.getText().toString();
         passVerf = mPassVerf.getText().toString();
 
-        if (StringUtil.isNullOrEmpty(username)){
+        if (StringUtil.isNullOrEmpty(username)) {
             ToastUtil.showToast("用户名不能为空！");
             return;
         }
-        if (StringUtil.isNullOrEmpty(email)){
+        if (StringUtil.isNullOrEmpty(email)) {
             ToastUtil.showToast("邮箱不能为空");
             return;
         }
-        if (StringUtil.isNullOrEmpty(password)){
+        if (StringUtil.isNullOrEmpty(password)) {
             ToastUtil.showToast("密码不能为空");
             return;
         }
-        if (!password.equals(passVerf)){
+        if (!password.equals(passVerf)) {
             ToastUtil.showToast("两次输入密码不一致");
             return;
         }
@@ -94,25 +102,26 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onSuccess() {
                 ToastUtil.showToast("注册成功");
-                if (flag){
+                if (flag) {
                     creatrIntent(com.parttime.Activity.Company.MainActivity_.class);
                 } else {
                     creatrIntent(MainActivity_.class);
                 }
+                Config.setLoginStatus(true);
                 startActivity(mIntent);
                 finish();
             }
 
             @Override
             public void onFailure(int i, String s) {
-                ToastUtil.showToast("注册失败:"+s);
+                ToastUtil.showToast("注册失败:" + s);
             }
         });
 
     }
 
-    private void checkBoxChecked(Boolean flag){
-        if (flag){
+    private void checkBoxChecked(Boolean flag) {
+        if (flag) {
             isCompamy.setChecked(true);
             isUser.setChecked(false);
         } else {
@@ -121,8 +130,9 @@ public class RegisterActivity extends BaseActivity {
         }
         this.flag = flag;
     }
-    private void creatrIntent(Class T){
-        mIntent = new Intent(this,T);
+
+    private void creatrIntent(Class T) {
+        mIntent = new Intent(this, T);
     }
 
 

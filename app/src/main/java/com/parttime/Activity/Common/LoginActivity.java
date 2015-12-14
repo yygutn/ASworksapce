@@ -1,6 +1,7 @@
 package com.parttime.Activity.Common;
 
 import android.content.Intent;
+import android.util.Log;
 import android.widget.EditText;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -14,6 +15,7 @@ import com.parttime.R;
 import com.parttime.UI.Interface.TopBarStatus;
 import com.parttime.UI.Interface.TopBarStatusRight;
 import com.parttime.UI.TopBar;
+import com.parttime.Utils.StringUtil;
 import com.parttime.Utils.ToastUtil;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -41,7 +43,10 @@ public class LoginActivity extends BaseActivity {
     @AfterViews
     void start(){
         mTopbar.setTitle("登录");
-        mTopbar.setBackIconVisible();
+        Log.w("Jumy","backIcon is :"+getIntent().getBooleanExtra("back",false));
+        if (getIntent().getBooleanExtra("back",false)) {
+            mTopbar.setBackIconVisible();
+        }
         mTopbar.setTopBarStatusListener(new TopBarStatus() {
             @Override
             public void onTopBarBackClickDelegate() {
@@ -63,7 +68,6 @@ public class LoginActivity extends BaseActivity {
     private void skipToRegister() {
         mIntent = new Intent(this,RegisterActivity_.class);
         startActivity(mIntent);
-        finish();
     }
 
 
@@ -77,6 +81,9 @@ public class LoginActivity extends BaseActivity {
             public void done(User user, BmobException e) {
                 if (user != null){
                     ToastUtil.showToast("登录成功");
+                    if (StringUtil.isNullOrEmpty(user.getHead())) {
+                        user.setHead(getResources().getString(R.string.defaulthead));
+                    }
                     User.saveUserInfo(user);
                     Config.getInstance().set("password",pass);
                     doSwitchMain(user.getType());
@@ -95,6 +102,7 @@ public class LoginActivity extends BaseActivity {
             //person
             mIntent = new Intent(this, com.parttime.Activity.User.MainActivity_.class);
         }
+        Config.setLoginStatus(true);
         startActivity(mIntent);
         finish();
     }

@@ -3,6 +3,7 @@ package com.parttime.Activity.Common;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,10 +62,16 @@ public class SplashActivity extends BaseActivity{
 
     @AfterViews
     void start(){
+
+        doDelay(2000);
+    }
+
+    private void init() {
         createProgressBar(this,null);
         User user  = User.getUserInfo(this);
         if (user.getId() == 0){
             creatrIntent(LoginActivity_.class);
+            mIntent.putExtra("back",false);
         } else {
             if (user.getType()){
                 //company
@@ -75,6 +82,7 @@ public class SplashActivity extends BaseActivity{
                             creatrIntent(MainActivity_.class);
                         } else {
                             creatrIntent(LoginActivity_.class);
+                            mIntent.putExtra("back",false);
                         }
                     }
                 });
@@ -87,6 +95,7 @@ public class SplashActivity extends BaseActivity{
                             creatrIntent(com.parttime.Activity.User.MainActivity_.class);
                         } else {
                             creatrIntent(LoginActivity_.class);
+                            mIntent.putExtra("back",false);
                         }
                     }
                 });
@@ -94,6 +103,18 @@ public class SplashActivity extends BaseActivity{
         }
         startActivity(mIntent);
         finish();
+    }
+
+
+    private void doDelay(int delay){
+        final Handler handler = new Handler();
+        Runnable runnable  = new Runnable() {
+            @Override
+            public void run() {
+                init();
+            }
+        };
+        handler.postDelayed(runnable,delay);
     }
 
 
