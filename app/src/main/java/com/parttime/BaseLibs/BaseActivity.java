@@ -76,7 +76,7 @@ public class BaseActivity extends AppCompatActivity{
      */
     private static long exitTime = 0;
 
-    public void Back() {
+    public void backToPreActivity() {
         int postion = mPageStack.size() - 1;
         WeakReference<BaseActivity> mCurPage = mPageStack.get(postion);
         if (mPageStack.size() <= 1) {
@@ -89,7 +89,7 @@ public class BaseActivity extends AppCompatActivity{
                 System.exit(0);
             }
         } else if (mPageStack.size() > 1){
-            //Back to pre page  当前堆栈大于1执行，否则不会执行返回操作
+            //backToPreActivity to pre page  当前堆栈大于1执行，否则不会执行返回操作
 //            mCurPage = mPageStack.remove(postion);
 //            mCurPage.get().finish();
             finish();
@@ -99,7 +99,7 @@ public class BaseActivity extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        Back();
+        backToPreActivity();
     }
 
     /**

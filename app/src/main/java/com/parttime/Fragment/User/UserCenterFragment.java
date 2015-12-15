@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.parttime.Activity.Common.FeedBackActivity_;
 import com.parttime.Activity.User.MyCollectionActivity_;
 import com.parttime.Activity.User.MyPartTimeJobActivity_;
+import com.parttime.Activity.User.UserInfoDetailsActivity_;
 import com.parttime.Modules.Config;
 import com.parttime.R;
 import com.parttime.UI.UserItem;
@@ -61,9 +62,14 @@ public class UserCenterFragment extends Fragment{
 
 
     @Click({R.id.user_center_job,R.id.user_center_wallet,R.id.user_center_collection,
-            R.id.user_center_feedback,R.id.user_center_quit})
+            R.id.user_center_feedback,R.id.user_center_quit,R.id.user_center_nickname,R.id.user_center_head})
     void click(View view){
         switch (view.getId()){
+            case R.id.user_center_head:
+            case R.id.user_center_nickname:{
+                UserInfoDetailsActivity_.intent(this).start();
+                break;
+            }
             case R.id.user_center_job:{
                 startActivity(createIntent(MyPartTimeJobActivity_.class));
                 break;

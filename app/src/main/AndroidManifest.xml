@@ -51,6 +51,8 @@
 		</activity>
 		<activity android:name=".Activity.Company.MainActivity_">
 		</activity>
+		<activity android:name=".Activity.Common.ChangePassActivity_">
+		</activity>
 	</application>
 
 </manifest>

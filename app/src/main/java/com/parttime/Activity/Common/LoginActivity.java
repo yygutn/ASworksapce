@@ -43,14 +43,14 @@ public class LoginActivity extends BaseActivity {
     @AfterViews
     void start(){
         mTopbar.setTitle("登录");
-        Log.w("Jumy","backIcon is :"+getIntent().getBooleanExtra("back",false));
-        if (getIntent().getBooleanExtra("back",false)) {
+        Log.w("Jumy","backIcon is :"+getIntent().getBooleanExtra("backToPreActivity",false));
+        if (getIntent().getBooleanExtra("backToPreActivity",false)) {
             mTopbar.setBackIconVisible();
         }
         mTopbar.setTopBarStatusListener(new TopBarStatus() {
             @Override
             public void onTopBarBackClickDelegate() {
-                Back();
+                backToPreActivity();
             }
         });
         mTopbar.setRightTitle("注册");

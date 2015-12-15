@@ -4,18 +4,15 @@
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:orientation="vertical"
 		tools:context=".Activity.User.ChangeInfoActivity"
 		>
-	<android.support.v7.widget.Toolbar
+
+	<com.parttime.UI.TopBar_
 			android:id="@+id/user_info_change_topBar"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			app:title="哈哈"
-			app:titleTextColor="@color/white"
-			app:navigationIcon="@mipmap/title_back"
-			android:background="@color/colorPrimary"/>
+			/>
 
 	<EditText
 			android:id="@+id/user_info_change_edit"

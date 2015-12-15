@@ -71,7 +71,7 @@ public class SplashActivity extends BaseActivity{
         User user  = User.getUserInfo(this);
         if (user.getId() == 0){
             creatrIntent(LoginActivity_.class);
-            mIntent.putExtra("back",false);
+            mIntent.putExtra("backToPreActivity",false);
         } else {
             if (user.getType()){
                 //company
@@ -82,7 +82,7 @@ public class SplashActivity extends BaseActivity{
                             creatrIntent(MainActivity_.class);
                         } else {
                             creatrIntent(LoginActivity_.class);
-                            mIntent.putExtra("back",false);
+                            mIntent.putExtra("backToPreActivity",false);
                         }
                     }
                 });
@@ -95,7 +95,7 @@ public class SplashActivity extends BaseActivity{
                             creatrIntent(com.parttime.Activity.User.MainActivity_.class);
                         } else {
                             creatrIntent(LoginActivity_.class);
-                            mIntent.putExtra("back",false);
+                            mIntent.putExtra("backToPreActivity",false);
                         }
                     }
                 });

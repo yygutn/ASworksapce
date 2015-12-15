@@ -19,5 +19,6 @@
 	<string name="save">保存</string>
 	<string name="defaulthead">http://b.hiphotos.baidu.com/image/pic/item/730e0cf3d7ca7bcbdbff9d2ebc096b63f624a82f.jpg</string>
 	<string name="SignUp">报名</string>
+	<string name="title_activity_change_pass">ChangePassActivity</string>
 
 </resources>

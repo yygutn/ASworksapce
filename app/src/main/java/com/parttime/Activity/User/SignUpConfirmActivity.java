@@ -1,5 +1,7 @@
 package com.parttime.Activity.User;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 import com.parttime.BaseLibs.BaseActivity;
@@ -40,7 +42,7 @@ public class SignUpConfirmActivity extends BaseActivity {
         mTopbar.setTopBarStatusListener(new TopBarStatus() {
             @Override
             public void onTopBarBackClickDelegate() {
-                Back();
+                backToPreActivity();
             }
         });
         mTopbar.setTitle("报名确认");
@@ -60,7 +62,7 @@ public class SignUpConfirmActivity extends BaseActivity {
     void click(View view){
         switch (view.getId()){
             case R.id.sign_up_cancel:{
-                Back();
+                backToPreActivity();
                 break;
             }
             case R.id.sign_up_confirm:{
@@ -72,8 +74,19 @@ public class SignUpConfirmActivity extends BaseActivity {
 
     private void doSignUp() {
         //coding
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mSubmit.setText("已报名");
+                        //coding
+                    }
+                })
+                .setNegativeButton("取消",null)
+                .setMessage("确认报名")
+                .show();
+        dialog.setCanceledOnTouchOutside(true);
         //end
-        mSubmit.setText("已报名");
     }
 
 }

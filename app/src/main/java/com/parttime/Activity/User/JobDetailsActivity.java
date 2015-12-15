@@ -67,7 +67,7 @@ public class JobDetailsActivity extends BaseActivity {
         mTopbar.setTopBarStatusListener(new TopBarStatus() {
             @Override
             public void onTopBarBackClickDelegate() {
-                Back();
+                backToPreActivity();
             }
         });
         mTopbar.setTitle("兼职详情");
