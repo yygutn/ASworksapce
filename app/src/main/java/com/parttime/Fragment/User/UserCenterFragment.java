@@ -27,10 +27,10 @@ import java.util.List;
  * deadline is the first productivity
  */
 @EFragment(R.layout.fragment_user_center)
-public class UserCenterFragment extends Fragment{
+public class UserCenterFragment extends Fragment {
     private static final String TAG = UserCenterFragment.class.getSimpleName();
 
-    @ViewsById({R.id.user_center_job,R.id.user_center_wallet,R.id.user_center_collection,R.id.user_center_feedback})
+    @ViewsById({R.id.user_center_job, R.id.user_center_wallet, R.id.user_center_collection, R.id.user_center_feedback})
     List<UserItem> mItemList;
 
     @ViewById(R.id.user_center_head)
@@ -41,23 +41,23 @@ public class UserCenterFragment extends Fragment{
     User user;
 
     @AfterViews
-    void start(){
+    void start() {
         String urlstr = "";
-        user = User.getCurrentUser(getContext(),User.class);
-        if (user!=null) {
+        user = User.getCurrentUser(getContext(), User.class);
+        if (user != null) {
             urlstr = user.getHead();
         }
         if (StringUtil.isNullOrEmpty(urlstr)) {
             urlstr = Config.getInstance().get("head", getResources().getString(R.string.defaulthead));
         }
-        Log.w(TAG,urlstr);
+        Log.w(TAG, urlstr);
         Uri uri = Uri.parse(urlstr);
         mHead.setImageURI(uri);
         String nick = "";
-        if (user!=null){
+        if (user != null) {
             nick = user.getNickname();
         }
-        if (StringUtil.isNullOrEmpty(nick)){
+        if (StringUtil.isNullOrEmpty(nick)) {
             nick = Config.getInstance().get("nickname", "");
         }
         mNickName.setText(nick);
@@ -80,35 +80,36 @@ public class UserCenterFragment extends Fragment{
     }
 
 
-    @Click({R.id.user_center_job,R.id.user_center_wallet,R.id.user_center_collection,
-            R.id.user_center_feedback,R.id.user_center_quit,R.id.user_center_nickname,R.id.user_center_head})
-    void click(View view){
-        switch (view.getId()){
+    @Click({R.id.user_center_job, R.id.user_center_wallet, R.id.user_center_collection,
+            R.id.user_center_feedback, R.id.user_center_quit, R.id.user_center_nickname, R.id.user_center_head})
+    void click(View view) {
+        switch (view.getId()) {
             case R.id.user_center_head:
-            case R.id.user_center_nickname:{
+            case R.id.user_center_nickname: {
                 UserInfoDetailsActivity_.intent(this).start();
                 break;
             }
-            case R.id.user_center_job:{
+            case R.id.user_center_job: {
                 MyPartTimeJobActivity_.intent(getContext()).start();
                 break;
             }
-            case R.id.user_center_wallet:{
+            case R.id.user_center_wallet: {
                 break;
             }
-            case R.id.user_center_collection:{
+            case R.id.user_center_collection: {
                 MyCollectionActivity_.intent(getContext()).start();
                 break;
             }
-            case R.id.user_center_feedback:{
+            case R.id.user_center_feedback: {
                 FeedBackActivity_.intent(getContext()).start();
                 break;
             }
-            case R.id.user_center_quit:{
+            case R.id.user_center_quit: {
                 readyToQuit();
                 break;
             }
-            default:break;
+            default:
+                break;
         }
     }
 
@@ -122,21 +123,26 @@ public class UserCenterFragment extends Fragment{
                         doClear();
                     }
                 })
-                .setNegativeButton("取消",null)
+                .setNegativeButton("取消", null)
                 .show();
         dialog.setCanceledOnTouchOutside(true);
     }
 
     private void doClear() {
         User.logOut(getContext());
-        LoginActivity_.intent(getContext()).extra("backToPreActivity",false).start();
+        LoginActivity_.intent(getContext()).extra("backToPreActivity", false).start();
         getActivity().finish();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mHead.setImageURI(Uri.parse(User.getCurrentUser(getContext(),User.class).getHead()));
-        mNickName.setText(User.getCurrentUser(getContext(),User.class).getNickname());
+        User user = User.getCurUser(getContext());
+        if (!StringUtil.isNullOrEmpty(user.getHead())) {
+            mHead.setImageURI(Uri.parse(user.getHead()));
+        }
+        if (!StringUtil.isNullOrEmpty(user.getNickname())) {
+            mNickName.setText(user.getNickname());
+        }
     }
 }

@@ -15,6 +15,7 @@ import com.parttime.Modules.Config;
 import com.parttime.Modules.User;
 import com.parttime.R;
 import com.parttime.UI.UserItem;
+import com.parttime.Utils.StringUtil;
 import com.parttime.Utils.ToastUtil;
 import org.androidannotations.annotations.*;
 
@@ -105,6 +106,9 @@ public class CompanyCenterFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mLogo.setImageURI(Uri.parse(User.getCurrentUser(getContext(),User.class).getHead()));
+        User user = User.getCurUser(getContext());
+        if (!StringUtil.isNullOrEmpty(user.getHead())) {
+            mLogo.setImageURI(Uri.parse(user.getHead()));
+        }
     }
 }

@@ -54,6 +54,10 @@ public class User extends BmobUser{
         return user;
     }
 
+    public static User getCurUser(Context context){
+        return User.getCurrentUser(context,User.class);
+    }
+
     public Integer getId() {
         return id;
     }

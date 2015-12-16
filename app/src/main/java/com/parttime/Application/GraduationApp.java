@@ -5,6 +5,8 @@ import cn.bmob.v3.Bmob;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.parttime.Activity.Common.SplashActivity_;
+import com.parttime.Utils.CrashHandler;
 import com.squareup.okhttp.OkHttpClient;
 
 /**
@@ -36,5 +38,6 @@ public class GraduationApp extends Application{
                 .build();
         Fresco.initialize(this,config);
         Bmob.initialize(this,Application_ID);
+        CrashHandler.getInstance().init(this, SplashActivity_.class);
     }
 }
