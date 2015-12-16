@@ -33,7 +33,6 @@ dependencies {
 
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
-    testCompile 'junit:junit:4.12'
     //以下SDK开发者请根据需要自行选择
     //bmob-sdk ：Bmob的android sdk包
     //bmob-push：Bmob的推送包

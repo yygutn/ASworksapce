@@ -4,6 +4,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
+import com.parttime.Utils.StringUtil;
 import com.parttime.Utils.ToastUtil;
 
 import java.lang.ref.WeakReference;
@@ -44,7 +46,7 @@ public class BaseActivity extends AppCompatActivity{
     public static void deleteAllStackBesideTop(){
         int len = mPageStack.size();
         while(mPageStack.size()>1){
-            mPageStack.remove(0).get().finish();
+            mPageStack.remove(1).get().finish();
         }
     }
 
@@ -114,8 +116,17 @@ public class BaseActivity extends AppCompatActivity{
 
     @Override
     public void finish() {
+        Log.w("Jumy","Before finish, the Stack size is :"+mPageStack.size());
         int pos = mPageStack.size() - 1;
         mPageStack.remove(pos);
         super.finish();
+    }
+
+    Toast toast;
+
+    public void showToast(final String text){
+        if (!StringUtil.isNullOrEmpty(text)){
+            toast.makeText(this,text,Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.parttime.Activity.Common;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -60,6 +61,8 @@ public class SplashActivity extends BaseActivity{
 
     Intent mIntent;
 
+    Context context = this;
+
     @AfterViews
     void start(){
 
@@ -68,10 +71,9 @@ public class SplashActivity extends BaseActivity{
 
     private void init() {
         createProgressBar(this,null);
-        User user  = User.getUserInfo(this);
-        if (user.getId() == 0){
-            creatrIntent(LoginActivity_.class);
-            mIntent.putExtra("backToPreActivity",false);
+        User user = User.getCurrentUser(context,User.class);
+        if (!Config.getLoginStatus()){
+            LoginActivity_.intent(context).extra("backToPreActivity",false).start();
         } else {
             if (user.getType()){
                 //company
@@ -79,10 +81,11 @@ public class SplashActivity extends BaseActivity{
                     @Override
                     public void done(User user, BmobException e) {
                         if (user != null){
-                            creatrIntent(MainActivity_.class);
+                            Config.setLoginStatus(true);
+                            User.saveUserInfo(user);
+                            MainActivity_.intent(context).start();
                         } else {
-                            creatrIntent(LoginActivity_.class);
-                            mIntent.putExtra("backToPreActivity",false);
+                            LoginActivity_.intent(context).extra("backToPreActivity",false).start();
                         }
                     }
                 });
@@ -92,16 +95,16 @@ public class SplashActivity extends BaseActivity{
                     @Override
                     public void done(User user, BmobException e) {
                         if (user != null){
-                            creatrIntent(com.parttime.Activity.User.MainActivity_.class);
+                            Config.setLoginStatus(true);
+                            User.saveUserInfo(user);
+                            com.parttime.Activity.User.MainActivity_.intent(context).start();
                         } else {
-                            creatrIntent(LoginActivity_.class);
-                            mIntent.putExtra("backToPreActivity",false);
+                            LoginActivity_.intent(context).extra("backToPreActivity",false).start();
                         }
                     }
                 });
             }
         }
-        startActivity(mIntent);
         finish();
     }
 
@@ -115,10 +118,5 @@ public class SplashActivity extends BaseActivity{
             }
         };
         handler.postDelayed(runnable,delay);
-    }
-
-
-    private void creatrIntent(Class T){
-        mIntent = new Intent(this,T);
     }
 }

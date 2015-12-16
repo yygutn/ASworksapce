@@ -10,7 +10,11 @@ import com.parttime.R;
  */
 public class User extends BmobUser{
     private Integer id;
+    private String CompanyName;//公司名字
+    private String Boss;//负责人
     private String head;//头像
+    private String TEL;//g固话
+    private String Location;//公司地址
     private String nickname;//昵称
     private String remark;//简介
     private Boolean type;// 0 custom 1 company
@@ -24,6 +28,12 @@ public class User extends BmobUser{
         Config.getInstance().set("username",user.getUsername()==null?"":user.getUsername());
         Config.getInstance().set("mobilePhoneNumber",user.getMobilePhoneNumber()==null?"":user.getMobilePhoneNumber());
         Config.getInstance().set("email",user.getEmail()==null?"":user.getEmail());
+
+        Config.getInstance().set("CompanyName",user.getCompanyName()==null?"":user.getCompanyName());
+        Config.getInstance().set("Boss",user.getBoss()==null?"":user.getBoss());
+        Config.getInstance().set("TEL",user.getTEL()==null?"":user.getTEL());
+        Config.getInstance().set("Location",user.getLocation()==null?"":user.getLocation());
+
     }
 
     public static User getUserInfo(Context context){
@@ -36,6 +46,11 @@ public class User extends BmobUser{
         user.setUsername(Config.getInstance().get("username",""));
         user.setMobilePhoneNumber(Config.getInstance().get("mobilePhoneNumber",""));
         user.setEmail(Config.getInstance().get("email",""));
+
+        user.setCompanyName(Config.getInstance().get("CompanyName",""));
+        user.setBoss(Config.getInstance().get("Boss",""));
+        user.setTEL(Config.getInstance().get("TEL",""));
+        user.setLocation(Config.getInstance().get("Location",""));
         return user;
     }
 
@@ -77,5 +92,37 @@ public class User extends BmobUser{
 
     public void setType(Boolean type) {
         this.type = type;
+    }
+
+    public String getCompanyName() {
+        return CompanyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        CompanyName = companyName;
+    }
+
+    public String getBoss() {
+        return Boss;
+    }
+
+    public void setBoss(String boss) {
+        Boss = boss;
+    }
+
+    public String getTEL() {
+        return TEL;
+    }
+
+    public void setTEL(String TEL) {
+        this.TEL = TEL;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
     }
 }

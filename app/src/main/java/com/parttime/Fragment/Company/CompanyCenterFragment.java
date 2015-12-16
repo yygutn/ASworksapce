@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.parttime.Activity.Common.FeedBackActivity_;
+import com.parttime.Activity.Common.LoginActivity_;
 import com.parttime.Modules.Config;
+import com.parttime.Modules.User;
 import com.parttime.R;
 import com.parttime.UI.UserItem;
 import com.parttime.Utils.ToastUtil;
@@ -62,8 +64,7 @@ public class CompanyCenterFragment extends Fragment {
                 break;
             }
             case R.id.company_center_feedback:{
-                createIntent(FeedBackActivity_.class);
-                startActivity(mIntent);
+                FeedBackActivity_.intent(getContext()).start();
                 break;
             }
             case R.id.company_center_share:{
@@ -86,6 +87,8 @@ public class CompanyCenterFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //清除账号信息
+                        Config.setLoginStatus(false);
+                        doClear();
                     }
                 })
                 .setNegativeButton("取消",null)
@@ -93,8 +96,15 @@ public class CompanyCenterFragment extends Fragment {
         dialog.setCanceledOnTouchOutside(true);
     }
 
-    private void createIntent(Class T){
-        mIntent = new Intent(getContext(),T);
+    private void doClear() {
+        User.logOut(getContext());
+        LoginActivity_.intent(getContext()).extra("backToPreActivity",false).start();
+        getActivity().finish();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mLogo.setImageURI(Uri.parse(User.getCurrentUser(getContext(),User.class).getHead()));
+    }
 }

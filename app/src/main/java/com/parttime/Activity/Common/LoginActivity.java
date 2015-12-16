@@ -1,6 +1,7 @@
 package com.parttime.Activity.Common;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.EditText;
 import cn.bmob.v3.BmobUser;
@@ -44,7 +45,7 @@ public class LoginActivity extends BaseActivity {
     void start(){
         mTopbar.setTitle("登录");
         Log.w("Jumy","backIcon is :"+getIntent().getBooleanExtra("backToPreActivity",false));
-        if (getIntent().getBooleanExtra("backToPreActivity",false)) {
+        if (getIntent().getBooleanExtra("backToPreActivity",true)) {
             mTopbar.setBackIconVisible();
         }
         mTopbar.setTopBarStatusListener(new TopBarStatus() {
@@ -60,6 +61,10 @@ public class LoginActivity extends BaseActivity {
                 skipToRegister();
             }
         });
+        String str = Config.getInstance().get("head",getResources().getString(R.string.defaulthead));
+        if (!StringUtil.isNullOrEmpty(str)){
+            mLogo.setImageURI(Uri.parse(str));
+        }
     }
 
     /**
@@ -84,6 +89,7 @@ public class LoginActivity extends BaseActivity {
                     if (StringUtil.isNullOrEmpty(user.getHead())) {
                         user.setHead(getResources().getString(R.string.defaulthead));
                     }
+                    Config.setLoginStatus(true);
                     User.saveUserInfo(user);
                     Config.getInstance().set("password",pass);
                     doSwitchMain(user.getType());

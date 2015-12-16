@@ -1,5 +1,6 @@
 package com.parttime.Activity.Company;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import com.parttime.BaseLibs.BaseActivity;
@@ -8,6 +9,7 @@ import com.parttime.Fragment.Company.HomeFragment_;
 import com.parttime.R;
 import com.parttime.UI.CompanyMenuBar;
 import com.parttime.UI.Interface.MenuBarStatus;
+import com.parttime.UI.Interface.TopBarStatusRight;
 import com.parttime.UI.TopBar;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -30,6 +32,7 @@ public class MainActivity extends BaseActivity {
     private Fragment[] fragments = new Fragment[2];
     private FragmentTransaction fragmentTransaction;
 
+    Context context = this;
 
     @AfterViews
     void start(){
@@ -41,6 +44,12 @@ public class MainActivity extends BaseActivity {
             public void onMenuBarSwitchedDelegate(int index) {
                 switchPage(index);
                 changeTitle(index);
+            }
+        });
+        mTopbar.setTopBarStatusRight(new TopBarStatusRight() {
+            @Override
+            public void onRightClickDelegate() {
+                CompanyInfoDetailsActivity_.intent(context).start();
             }
         });
     }
@@ -71,8 +80,10 @@ public class MainActivity extends BaseActivity {
     private void changeTitle(int index){
         if (index == 0){
             mTopbar.setTitle("首页");
+            mTopbar.setRightInVisible();
         } else {
             mTopbar.setTitle("我");
+            mTopbar.setRightTitle("企业资料");
         }
     }
 

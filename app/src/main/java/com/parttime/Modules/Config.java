@@ -1,5 +1,6 @@
 package com.parttime.Modules;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.parttime.Application.GraduationApp;
@@ -18,7 +19,7 @@ public class Config {
     SharedPreferences sharedPreferences;
 
     public Config() {
-        sharedPreferences = GraduationApp.getInstance().getSharedPreferences("config",0);
+        sharedPreferences = GraduationApp.getInstance().getSharedPreferences("config", Context.MODE_PRIVATE);
     }
 
     /**

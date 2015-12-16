@@ -57,6 +57,10 @@ public class TopBar extends LinearLayout{
         mRightTv.setVisibility(VISIBLE);
     }
 
+    public void setRightInVisible(){
+        mRightTv.setVisibility(GONE);
+    }
+
     @Click({R.id.topBar_nav,R.id.topBar_rightTV})
     void backClicked(View v){
         switch (v.getId()){

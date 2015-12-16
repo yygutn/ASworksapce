@@ -38,7 +38,7 @@
 					android:layout_height="50dp"
 					app:roundAsCircle="true"
 					app:failureImageScaleType="fitXY"
-					android:background="@mipmap/main_index_my_pressed"
+					app:failureImage="@mipmap/main_index_my_pressed"
 					/>
 
 			<ImageView

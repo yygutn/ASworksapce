@@ -7,6 +7,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.parttime.BaseLibs.BaseActivity;
+import com.parttime.Modules.User;
 import com.parttime.R;
 import com.parttime.UI.Interface.TopBarStatus;
 import com.parttime.UI.TopBar;
@@ -69,6 +70,15 @@ public class ChangeInfoActivity extends BaseActivity {
         }
         data.putExtra("text",text);
         setResult(requestCode*10,data);
+        User user = User.getCurrentUser(this,User.class);
+        if (requestCode == 111){
+            user.setNickname(text);
+        } else if (requestCode == 222){
+            user.setRemark(text);
+        } else if (requestCode == 333){
+            user.setMobilePhoneNumber(text);
+        }
+        user.update(this);
         backToPreActivity();
     }
 }
