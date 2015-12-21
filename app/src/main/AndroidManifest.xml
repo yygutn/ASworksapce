@@ -53,6 +53,8 @@
 		</activity>
 		<activity android:name=".Activity.Common.ChangePassActivity_">
 		</activity>
+		<activity android:name=".Activity.Company.NewJobActivity_">
+		</activity>
 	</application>
 
 </manifest>

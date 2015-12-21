@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white"
+		tools:context="com.parttime.Activity.Company.NewJobActivity"
+		>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp"
+			android:orientation="vertical">
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="工作名称"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<EditText
+					android:id="@+id/new_job_name"
+					android:inputType="text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="LOL"
+					android:textColor="@color/black"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:layout_marginLeft="10dp"
+					/>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="日薪"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<EditText
+					android:id="@+id/new_job_pay"
+					android:inputType="text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="LOL"
+					android:textColor="@color/black"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:layout_marginLeft="10dp"
+					/>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="工作地点"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<EditText
+					android:id="@+id/new_job_work_location"
+					android:inputType="text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="LOL"
+					android:textColor="@color/black"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:layout_marginLeft="10dp"
+					/>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="性别要求"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="horizontal"
+					android:padding="5dp"
+					android:gravity="center_vertical">
+
+				<CheckBox
+						android:layout_width="0dp"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:text="男"/>
+				<CheckBox
+						android:layout_width="0dp"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:text="女"/>
+
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="集合地点"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<EditText
+					android:id="@+id/new_job_gathering_location"
+					android:inputType="text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="LOL"
+					android:textColor="@color/black"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:layout_marginLeft="10dp"
+					/>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:weightSum="5"
+				android:orientation="horizontal"
+				>
+
+			<TextView
+					android:layout_width="70dp"
+					android:layout_height="wrap_content"
+					android:textSize="14sp"
+					android:layout_gravity="center_vertical"
+					android:text="工作地点"
+					/>
+
+			<ImageView
+					android:layout_gravity="center_vertical"
+					android:layout_width="1dp"
+					android:layout_height="40dp"
+					android:background="@color/lightgrey"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					/>
+
+			<EditText
+					android:id="@+id/new_job_work_location"
+					android:inputType="text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="LOL"
+					android:textColor="@color/black"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:padding="5dp"
+					android:layout_marginLeft="10dp"
+					/>
+
+		</LinearLayout>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:background="@color/defaultColor"
+				/>
+	</LinearLayout>
+
+</ScrollView>

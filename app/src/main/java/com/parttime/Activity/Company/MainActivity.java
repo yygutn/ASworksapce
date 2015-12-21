@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
     @ViewById(R.id.company_menuBar)
     CompanyMenuBar mMenuBar;
     @ViewById(R.id.company_topBar)
-    TopBar mTopbar;
+    TopBar mTopBar;
     @ColorRes(R.color.white)
     int white;
     private Fragment[] fragments = new Fragment[2];
@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
     Context context = this;
 
     @AfterViews
-    void start(){
+    void start() {
         deleteAllStackBesideTop();
         switchPage(0);
         changeTitle(0);
@@ -46,53 +46,62 @@ public class MainActivity extends BaseActivity {
                 changeTitle(index);
             }
         });
-        mTopbar.setTopBarStatusRight(new TopBarStatusRight() {
+        mTopBar.setTopBarStatusRight(new TopBarStatusRight() {
             @Override
             public void onRightClickDelegate() {
-                CompanyInfoDetailsActivity_.intent(context).start();
+                if (BaseActivity.mIndex == 1) {
+                    CompanyInfoDetailsActivity_.intent(context).start();
+                }
+                else {
+                    // goto 发布兼职
+                }
             }
         });
     }
 
 
-    private void switchPage(int index){
+    private void switchPage(int index) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (fragments[index] != null){
+        if (fragments[index] != null) {
             fragmentTransaction.hide(fragments[BaseActivity.preIndex]);
             fragmentTransaction.show(fragments[index]);
-        } else {
+        }
+        else {
             fragments[index] = getFragmentPage(index);
-            fragmentTransaction.add(R.id.company_frame,fragments[index]);
+            fragmentTransaction.add(R.id.company_frame, fragments[index]);
         }
         fragmentTransaction.commit();
     }
 
-    private Fragment getFragmentPage(int index){
-        switch (index){
+    private Fragment getFragmentPage(int index) {
+        switch (index) {
             case 0:
                 return new HomeFragment_();
             case 1:
                 return new CompanyCenterFragment_();
-            default:return null;
+            default:
+                return null;
         }
     }
 
-    private void changeTitle(int index){
-        if (index == 0){
-            mTopbar.setTitle("首页");
-            mTopbar.setRightInVisible();
-        } else {
-            mTopbar.setTitle("我");
-            mTopbar.setRightTitle("企业资料");
+    private void changeTitle(int index) {
+        if (index == 0) {
+            mTopBar.setTitle("首页");
+            mTopBar.setRightTitle("发布兼职");
+        }
+        else {
+            mTopBar.setTitle("我");
+            mTopBar.setRightTitle("企业资料");
         }
     }
 
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
-        if (fragments[0] == null && fragment instanceof HomeFragment_){
+        if (fragments[0] == null && fragment instanceof HomeFragment_) {
             fragments[0] = fragment;
-        } else if (fragments[1] == null && fragment instanceof CompanyCenterFragment_){
+        }
+        else if (fragments[1] == null && fragment instanceof CompanyCenterFragment_) {
             fragments[1] = fragment;
         }
     }
