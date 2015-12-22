@@ -77,7 +77,7 @@ public class TopBar extends LinearLayout{
     }
 
     TopBarStatusRight topBarStatusRight;
-    public void setTopBarStatusRight(TopBarStatusRight listener){
+    public void setTopBarStatusRightListener(TopBarStatusRight listener){
         topBarStatusRight = listener;
     }
 

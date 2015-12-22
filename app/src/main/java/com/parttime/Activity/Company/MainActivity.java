@@ -1,6 +1,7 @@
 package com.parttime.Activity.Company;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import com.parttime.BaseLibs.BaseActivity;
@@ -46,7 +47,7 @@ public class MainActivity extends BaseActivity {
                 changeTitle(index);
             }
         });
-        mTopBar.setTopBarStatusRight(new TopBarStatusRight() {
+        mTopBar.setTopBarStatusRightListener(new TopBarStatusRight() {
             @Override
             public void onRightClickDelegate() {
                 if (BaseActivity.mIndex == 1) {
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity {
                 }
                 else {
                     // goto 发布兼职
+                    NewJobActivity_.intent(context).startForResult(110);
                 }
             }
         });
@@ -103,6 +105,14 @@ public class MainActivity extends BaseActivity {
         }
         else if (fragments[1] == null && fragment instanceof CompanyCenterFragment_) {
             fragments[1] = fragment;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 110 && resultCode == 11){
+            //refresh view
         }
     }
 }

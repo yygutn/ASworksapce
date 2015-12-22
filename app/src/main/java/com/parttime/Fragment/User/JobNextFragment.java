@@ -3,21 +3,22 @@ package com.parttime.Fragment.User;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 import com.parttime.Activity.User.JobDetailsActivity_;
 import com.parttime.Adapter.Base.BaseRecViewClickStatus;
 import com.parttime.Adapter.JobListAdapter;
 import com.parttime.Modules.Node;
 import com.parttime.R;
+import com.parttime.Utils.ToastUtil;
 import com.yalantis.phoenix.PullToRefreshView;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Jumy on 15/12/8 下午2:55.
@@ -30,11 +31,15 @@ public class JobNextFragment extends Fragment{
     @ViewById(R.id.fragment_refreshView)
     PullToRefreshView mRecView;
 
-    JobListAdapter adapter = null;
+    JobListAdapter adapter = new JobListAdapter(null);
+    private int page = 0;//当前请求的页数
+
+    private int number = 10;//每次请求的数量
 
     @AfterViews
     void start(){
-        initData();
+        updateList(0);
+        mListView.setAdapter(adapter);
         mRecView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -43,7 +48,7 @@ public class JobNextFragment extends Fragment{
                     public void run() {
                         mRecView.setRefreshing(false);
                         //coding
-                        updateList();
+                        updateList(page);
                     }
                 },1500);
             }
@@ -58,66 +63,26 @@ public class JobNextFragment extends Fragment{
         });
     }
 
-    private void initData(){
-        Node item;
-        List<Node> list = new ArrayList<>();
-        Random random = new Random();
-        int len = random.nextInt()%50;
-        len = len<0? len*(-1) : len;
-        for(int i=0;i<len;i++){
-            item = new Node();
-            item.setGathering_location("学林街"+random.nextInt(10000)+"号");
-            item.setId(random.nextInt(1000000000));
-            item.setRemark("风筝在阴天搁浅，想念还在等待救援"+ random.nextInt(100));
-            item.setCompanyId(random.nextInt(1000000000));
-            item.setCompany("搁浅"+random.nextInt(100));
-            item.setTimeLine("早9点 到 晚5点");
-            item.setPay(random.nextInt(500)+"/天");
-            int a = random.nextInt()%3;
-            item.setSexExpected(a==0?"男":(a==1?"女":"性别不限"));
-            item.setGathering_time(random.nextInt());
-            item.setJobname("Hack it" + random.nextInt(50));
-            item.setWorkLocation("学林街" + random.nextInt(10000)+"号");
-            item.setTime_start(random.nextInt());
-            item.setTime_end(random.nextInt());
-            item.setWorkType("其他" + random.nextInt(100));
-            item.setNumExpected(random.nextInt(100));
-            item.setNumHave(random.nextInt(100));
-            list.add(item);
-        }
-        adapter = new JobListAdapter(list);
-        mListView.setAdapter(adapter);
-    }
+    void updateList(int pages){
+        page = pages;
+        BmobQuery<Node> query = new BmobQuery<>();
+        query.addWhereGreaterThan("id",0);
+        query.setLimit(number);
+        query.setSkip(number*pages);
+        query.findObjects(getContext(), new FindListener<Node>() {
+            @Override
+            public void onSuccess(List<Node> list) {
+                Log.w("Jumy","返回的数据大小："+list.size());
+                if (list.size()>0){
+                    adapter.addList(list);
+                }
+            }
 
-    @UiThread
-    void updateList(){
-        Node item;
-        List<Node> list = new ArrayList< >();
-        Random random = new Random();
-        int len = random.nextInt()%50;
-        len = len<0? len*(-1) : len;
-        for(int i=0;i<len;i++){
-            item = new Node();
-            item.setGathering_location("学源街"+random.nextInt(10000)+"号");
-            item.setId(random.nextInt(1000000000));
-            item.setRemark("风筝在阴天搁浅，想念还在等待救援"+ random.nextInt(100));
-            item.setCompanyId(random.nextInt(1000000000));
-            item.setCompany("搁浅"+random.nextInt(100));
-            item.setTimeLine("早9点 到 晚5点");
-            item.setPay(random.nextInt(500)+"/天");
-            int a = random.nextInt()%3;
-            item.setSexExpected(a==0?"男":(a==1?"女":"性别不限"));
-            item.setGathering_time(random.nextInt(999999999));
-            item.setJobname("发传单" + random.nextInt(50));
-            item.setWorkLocation("学源街" + random.nextInt(10000)+"号");
-            item.setTime_start(random.nextInt());
-            item.setTime_end(random.nextInt());
-            item.setWorkType("其他" + random.nextInt(100));
-            item.setNumExpected(random.nextInt(100));
-            item.setNumHave(random.nextInt(100));
-            list.add(item);
-        }
-        adapter = new JobListAdapter(list);
-        mListView.setAdapter(adapter);
+            @Override
+            public void onError(int i, String s) {
+                ToastUtil.showToast("网络异常，请重新尝试");
+            }
+        });
+        page++;
     }
 }

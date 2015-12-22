@@ -59,7 +59,7 @@ public class CompanyInfoDetailsActivity extends BaseActivity {
         });
         initViews();
         mTopbar.setRightTitle("修改资料");
-        mTopbar.setTopBarStatusRight(new TopBarStatusRight() {
+        mTopbar.setTopBarStatusRightListener(new TopBarStatusRight() {
             @Override
             public void onRightClickDelegate() {
                 CompanyInfoChangeActivity_.intent(context).startForResult(110);

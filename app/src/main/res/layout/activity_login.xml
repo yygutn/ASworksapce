@@ -23,7 +23,6 @@
 			android:layout_width="70dp"
 			android:layout_height="70dp"
 			app:roundAsCircle="true"
-			app:actualImageScaleType="fitXY"
 			android:background="@mipmap/main_index_my_pressed"
 			/>
 

@@ -1,9 +1,12 @@
 package com.parttime.Modules;
 
+import android.content.Context;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobGeoPoint;
+import cn.bmob.v3.listener.SaveListener;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by jumy on 15/9/5 下午12:38.
@@ -23,9 +26,33 @@ public class Node extends BmobObject implements Serializable {
     private Integer gathering_time;//集合时间
     private String gathering_location;//集合地点
     private String workType;//工作类型
-    private String worktimerange;//工作日期
+    private String worktimerange;//工作日期--
     private Integer time_start;//工作开始时间 工作日期
     private Integer time_end;//工作结束时间
+
+    @Override
+    public void insertBatch(Context context, List<BmobObject> objects, SaveListener listener) {
+        super.insertBatch(context, objects, listener);
+    }
+
+    public String getWork_time_start() {
+        return work_time_start;
+    }
+
+    public void setWork_time_start(String work_time_start) {
+        this.work_time_start = work_time_start;
+    }
+
+    public String getWork_time_end() {
+        return work_time_end;
+    }
+
+    public void setWork_time_end(String work_time_end) {
+        this.work_time_end = work_time_end;
+    }
+
+    private String work_time_start;
+    private String work_time_end;
     private String timeLine;//工作时间
     private Integer numExpected;//需要人数
     private Integer numHave;//已招聘人数

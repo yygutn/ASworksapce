@@ -55,7 +55,7 @@ public class LoginActivity extends BaseActivity {
             }
         });
         mTopbar.setRightTitle("注册");
-        mTopbar.setTopBarStatusRight(new TopBarStatusRight() {
+        mTopbar.setTopBarStatusRightListener(new TopBarStatusRight() {
             @Override
             public void onRightClickDelegate() {
                 skipToRegister();
