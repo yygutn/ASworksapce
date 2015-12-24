@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity {
     @AfterViews
     void start(){
         deleteAllStackBesideTop();
+        BaseActivity.mIndex = 0;
         switchPage(0);
         changeTitle(0);
         mMenuBar.setMenuStatusListener(new MenuBarStatus() {
