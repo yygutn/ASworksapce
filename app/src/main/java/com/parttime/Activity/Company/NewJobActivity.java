@@ -1,10 +1,12 @@
 package com.parttime.Activity.Company;
 
+import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.SaveListener;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
@@ -79,6 +81,8 @@ public class NewJobActivity extends BaseActivity {
     private String timeStart = "";
     private String timeEnd = "";
 
+    private Date mworkTime;
+
 
     List<ProvinceModel> provinceList = null;
     TimePickerView mTimer;
@@ -145,7 +149,7 @@ public class NewJobActivity extends BaseActivity {
         }
         timeEnd = mTimeEnd.getText().toString();
         if (StringUtil.isNullOrEmpty(timeEnd)) {
-            showToast("工作结束不能为空");
+            showToast("工作结束时间不能为空");
             return;
         }
         jobNumber = mJobNumber.getText().toString();
@@ -170,6 +174,8 @@ public class NewJobActivity extends BaseActivity {
         node.setWorkType("其他");
         node.setNumHave(0);
         node.setGathering_time(new Random().nextInt(1000000000));
+        node.setWorkTime(new BmobDate(mworkTime));
+        node.setRemark(jobRemark);
         node.save(this, new SaveListener() {
             @Override
             public void onSuccess() {
@@ -253,11 +259,13 @@ public class NewJobActivity extends BaseActivity {
         mTimer.setCyclic(false);
         mTimer.setCancelable(true);
         mTimer.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+            @SuppressLint("SimpleDateFormat")
             @Override
             public void onTimeSelect(Date date) {
                 SimpleDateFormat format;
                 if (index == 2){
                     format =  new SimpleDateFormat("yyyy-MM-dd");
+                    mworkTime = date;
                 } else {
                     format= new SimpleDateFormat("HH:mm");
                 }

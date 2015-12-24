@@ -32,14 +32,10 @@ public class HomeFragmentItem2 extends Fragment{
 
     JobListAdapter adapter = new JobListAdapter(null);
 
-    private int page = 0;//当前请求的页数
-
-    private int number = 10;//每次请求的数量
-
     @AfterViews
     void start(){
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        updateData(0);
+        updateData();
         mRecyclerView.setAdapter(adapter);
         mRefView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
@@ -49,26 +45,25 @@ public class HomeFragmentItem2 extends Fragment{
                     public void run() {
                         mRefView.setRefreshing(false);
                         //coding
-                        updateData(page);
+                        updateData();
                     }
                 },1500);
             }
         });
     }
 
-    private void updateData(int pages) {
-        page = pages;
+    private void updateData() {
         User user = User.getCurUser(getContext());
         BmobQuery<Node> query = new BmobQuery<>();
         query.addWhereEqualTo("companyId",user.getId());
-        query.setLimit(number);
-        query.setSkip(number*pages);
+        query.addWhereEqualTo("status",false);
+        query.order("-updatedAt");
         query.findObjects(getContext(), new FindListener<Node>() {
             @Override
             public void onSuccess(List<Node> list) {
                 Log.w("Jumy","返回的数据大小："+list.size());
                 if (list.size()>0){
-                    adapter.addList(list);
+                    adapter.setList(list);
                 }
             }
 
@@ -77,6 +72,5 @@ public class HomeFragmentItem2 extends Fragment{
                 ToastUtil.showToast("网络异常，请重新尝试");
             }
         });
-        this.page++;
     }
 }

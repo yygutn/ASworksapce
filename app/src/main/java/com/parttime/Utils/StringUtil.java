@@ -45,6 +45,20 @@ public class StringUtil {
     }
 
     /**
+     * 将秒转换为详细的天
+     * @param seconds
+     * @return
+     */
+    public static String getSecondToday(int seconds){
+        Date date = new Date((long)seconds * 1000);
+        Date nowDate = new Date();
+        if(date.getYear() < nowDate.getYear()) return StringUtil.formatDate(seconds, "yyyy-MM-dd");
+        else if(date.getMonth() < nowDate.getMonth() || date.getDate() < nowDate.getDate() - 1) return (StringUtil.formatDate(seconds, "MM-dd"));
+        else if(date.getDate() == nowDate.getDate() - 1) return ("昨天");
+        else return ("今天");
+    }
+
+    /**
      * 时间转换
      * @param date
      * @param format

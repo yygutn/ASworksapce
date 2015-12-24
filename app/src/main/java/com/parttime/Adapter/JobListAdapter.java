@@ -5,7 +5,6 @@ import android.view.ViewGroup;
 import com.parttime.Adapter.Base.BaseRecyclerViewAdapter;
 import com.parttime.Modules.Node;
 import com.parttime.R;
-import com.parttime.Utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +23,16 @@ public class JobListAdapter extends BaseRecyclerViewAdapter<Node, JobListAdapter
         super(list);
     }
 
+
     @Override
     protected void bindDataToItemView(ViewHolder holder, Node item) {
-        holder.setText(R.id.list_item_name, item.getJobname());
-        holder.setText(R.id.list_item_pay, item.getPay());
-        holder.setText(R.id.list_item_location, item.getWorkLocation());
-        holder.setText(R.id.list_item_sex, item.getSexExpected());
+        holder.setText(R.id.list_item_name, item.getJobname()==null?"":item.getJobname());
+        holder.setText(R.id.list_item_pay, item.getPay()==null?"0/天":item.getPay());
+        holder.setText(R.id.list_item_location, item.getWorkLocation()==null?"":item.getWorkLocation());
+        holder.setText(R.id.list_item_sex, item.getSexExpected()==null?"性别不限":item.getSexExpected());
         holder.setText(R.id.list_item_number, item.getNumHave() + "/" + item.getNumExpected());
-        if (item.getGathering_time() > 10000000) {
-            holder.setText(R.id.list_item_gathering_time, StringUtil.getSecondTotime(item.getGathering_time()));
-        }
-        holder.setText(R.id.list_item_work_time_start, item.getWork_time_start());
-        holder.setText(R.id.list_item_work_time_end, item.getWork_time_end());
+        holder.setText(R.id.list_item_work_time_start, item.getWork_time_start()==null?"9:00":item.getWork_time_start());
+        holder.setText(R.id.list_item_work_time_end, item.getWork_time_end()==null?"17:00":item.getWork_time_end());
         holder.setText(R.id.list_item_workType, item.getWorkType());
     }
 
@@ -55,7 +52,18 @@ public class JobListAdapter extends BaseRecyclerViewAdapter<Node, JobListAdapter
         if (mList == null){
             mList = new ArrayList<>();
         }
-        mList.addAll(0,list);
+        list.addAll(mList);
+        mList = list;
+        notifyDataSetChanged();
+    }
+
+    public void removeItem(Node item){
+        super.mList.remove(item);
+        notifyDataSetChanged();
+    }
+
+    public void setList(List<Node> list){
+        this.mList = list;
         notifyDataSetChanged();
     }
 }

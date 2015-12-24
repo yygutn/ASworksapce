@@ -1,11 +1,15 @@
 package com.parttime.Fragment.Company;
 
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import com.parttime.Adapter.Base.BaseRecViewClickStatus;
 import com.parttime.Adapter.JobListAdapter;
 import com.parttime.Modules.Node;
 import com.parttime.Modules.User;
@@ -54,6 +58,24 @@ public class HomeFragmentItem1 extends Fragment{
                 },1500);
             }
         });
+        adapter.setRecViewClickStatus(new BaseRecViewClickStatus<Node>() {
+            @Override
+            public void onItemClickDelegate(View view, final Node item) {
+                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                        .setTitle("确认兼职结束")
+                        .setNegativeButton("取消",null)
+                        .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapter.removeItem(item);
+                                item.setStatus(false);
+                                item.update(getContext());
+                            }
+                        })
+                        .show();
+                dialog.setCanceledOnTouchOutside(true);
+            }
+        });
     }
 
     private void updateData(int pages) {
@@ -61,8 +83,8 @@ public class HomeFragmentItem1 extends Fragment{
         User user = User.getCurUser(getContext());
         BmobQuery<Node> query = new BmobQuery<>();
         query.addWhereEqualTo("companyId",user.getId());
-        query.setLimit(number);
-        query.setSkip(number*pages);
+        query.addWhereEqualTo("status",true);
+        query.order("-updatedAt");
         query.findObjects(getContext(), new FindListener<Node>() {
             @Override
             public void onSuccess(List<Node> list) {

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.FindListener;
 import com.parttime.Activity.User.JobDetailsActivity_;
 import com.parttime.Adapter.Base.BaseRecViewClickStatus;
@@ -18,6 +19,9 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,8 +69,21 @@ public class JobNextFragment extends Fragment{
 
     void updateList(int pages){
         page = pages;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String s = "2015-12-26 00:00:00";
         BmobQuery<Node> query = new BmobQuery<>();
-        query.addWhereGreaterThan("id",0);
+        BmobQuery<Node> q3 = new BmobQuery<>();
+        List<BmobQuery<Node>> andQuerys = new ArrayList<BmobQuery<Node>>();
+        try {
+            q3.addWhereGreaterThanOrEqualTo("workTime",new BmobDate(format.parse(s)));
+        }
+        catch (ParseException e1) {
+            e1.printStackTrace();
+        }
+        andQuerys.add(q3);
+        query.addWhereEqualTo("status", true);
+        query.order("-updatedAt");
+        query.and(andQuerys);
         query.setLimit(number);
         query.setSkip(number*pages);
         query.findObjects(getContext(), new FindListener<Node>() {

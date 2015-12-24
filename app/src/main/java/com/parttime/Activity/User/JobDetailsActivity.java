@@ -1,8 +1,8 @@
 package com.parttime.Activity.User;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
+import cn.bmob.v3.datatype.BmobDate;
 import com.parttime.BaseLibs.BaseActivity;
 import com.parttime.Modules.Node;
 import com.parttime.R;
@@ -12,6 +12,9 @@ import com.parttime.Utils.StringUtil;
 import com.parttime.Utils.ToastUtil;
 import org.androidannotations.annotations.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -112,10 +115,23 @@ public class JobDetailsActivity extends BaseActivity {
         }
         mGatheringTime.setText(StringUtil.getSecondTotime(mNode.getGathering_time()));//集合时间
         mGatheringLoc.setText(mNode.getGathering_location());//集合地点
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        BmobDate bmobDate = mNode.getWorkTime();
+        Date date = null;
+        try {
+            date = format.parse(bmobDate.getDate());
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mNode.setWorktimerange(format.format(date));
         mWorkDate.setText(mNode.getWorktimerange());//工作日期
         mTimeRange.setText(mNode.getTimeLine());//工作时间
         mJobLocation.setText(mNode.getWorkLocation());//工作地点
         mJobIntroduce.setText(mNode.getRemark());//工作简介
+
+        mRight.setText("已收藏");
+        mRight.setClickable(false);
     }
 
 
@@ -123,9 +139,7 @@ public class JobDetailsActivity extends BaseActivity {
     void click(View view) {
         switch (view.getId()){
             case R.id.work_details_signUp:{
-                Intent mIntent = new Intent(this, SignUpConfirmActivity_.class);
-                mIntent.putExtra(Node.TAG, mNode);
-                startActivity(mIntent);
+                SignUpConfirmActivity_.intent(this).extra(Node.TAG,mNode).start();
                 break;
             }
             case R.id.topBar_rightTV:{
@@ -137,6 +151,8 @@ public class JobDetailsActivity extends BaseActivity {
     }
 
     private void doCollectionOrNot() {
-        ToastUtil.showToast("aaaa");
+        ToastUtil.showToast("收藏兼职成功");
+        mRight.setText("已收藏");
+        mRight.setClickable(false);
     }
 }

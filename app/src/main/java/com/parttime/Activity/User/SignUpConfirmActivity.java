@@ -78,6 +78,7 @@ public class SignUpConfirmActivity extends BaseActivity {
                 .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         mSubmit.setText("已报名");
                         //coding
                     }

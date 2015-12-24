@@ -506,6 +506,7 @@
 						android:layout_gravity="center_vertical"
 						android:gravity="center_vertical"
 						android:padding="5dp"
+						android:text="@string/lyric_love"
 						android:layout_marginLeft="10dp"
 						/>
 
