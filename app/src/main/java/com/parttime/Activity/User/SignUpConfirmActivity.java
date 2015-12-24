@@ -1,9 +1,11 @@
 package com.parttime.Activity.User;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
+import cn.bmob.v3.listener.UpdateListener;
 import com.parttime.BaseLibs.BaseActivity;
 import com.parttime.Modules.Node;
 import com.parttime.R;
@@ -34,6 +36,8 @@ public class SignUpConfirmActivity extends BaseActivity {
     TopBar mTopbar;
 
     Node mNode;
+
+    Context context = this;
 
     @AfterViews
     void start(){
@@ -78,9 +82,22 @@ public class SignUpConfirmActivity extends BaseActivity {
                 .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if (mNode.getNumExpected()>mNode.getNumHave()){
+                            mNode.setNumHave(mNode.getNumHave()+1);
+                            mNode.update(context, new UpdateListener() {
+                                @Override
+                                public void onSuccess() {
+                                    mSubmit.setText("已报名");
+                                }
 
-                        mSubmit.setText("已报名");
-                        //coding
+                                @Override
+                                public void onFailure(int i, String s) {
+                                    showToast("网络异常，报名失败");
+                                }
+                            });
+                        } else {
+                            showToast("该兼职已经招满");
+                        }
                     }
                 })
                 .setNegativeButton("取消",null)
