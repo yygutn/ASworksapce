@@ -52,7 +52,6 @@
 						android:id="@+id/company_info_change_logo"
 						android:layout_width="60dp"
 						android:layout_height="60dp"
-						app:failureImage="@mipmap/main_index_my_pressed"
 						/>
 
 				<TextView
